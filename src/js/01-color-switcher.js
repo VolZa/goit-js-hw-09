@@ -1,10 +1,7 @@
-const refs = {
-    bodyEl : document.querySelector('body'),
-    btnStartEl: document.querySelector('[data-start]'),
-    btnStopEl: document.querySelector('[data-stop]'),
-}
+const btnStartEl = document.querySelector('[data-start]');
+const btnStopEl = document.querySelector('[data-stop]');
 
-refs.btnStopEl.disabled = true;
+btnStopEl.disabled = true;
 
 let setIntervalColor = null;
 
@@ -13,20 +10,17 @@ const getRandomColor = function() {
 }
 
 const showRandomColors = function() {
-  refs.bodyEl.style.backgroundColor = getRandomColor();
+  document.body.style.backgroundColor = getRandomColor();
 }
 
-
 addEventListener('click', (ev) => {
-    if (ev.target === refs.btnStartEl) {
-        console.log('start');
-        refs.btnStartEl.disabled = true;
-        refs.btnStopEl.disabled = false;
+    if (ev.target === btnStartEl) {
+        btnStartEl.disabled = true;
+        btnStopEl.disabled = false;
         setIntervalColor = setInterval(() => { showRandomColors() }, 1000);
-    } else if (ev.target === refs.btnStopEl) {
-        console.log('stop');
-        refs.btnStartEl.disabled = false;
-        refs.btnStopEl.disabled = true;
+    } else if (ev.target === btnStopEl) {
+        btnStartEl.disabled = false;
+        btnStopEl.disabled = true;
         clearInterval(setIntervalColor);
     }
 })
