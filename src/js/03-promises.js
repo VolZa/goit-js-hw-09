@@ -33,7 +33,7 @@ refsPromise.buttonEl.addEventListener('click', (e) => {
   const amount = Number(refsPromise.inputAmountEl.value);
 
   for (let i = 1; i <= amount; i += 1) {
-    createPromise(i, delay + step * i)
+    createPromise(i, delay + step * (i-1))
       .then(({ position, delay }) => {
         Notiflix.Notify.success(`✅ Fulfilled promise ${i} in ${delay}ms`);
       })
